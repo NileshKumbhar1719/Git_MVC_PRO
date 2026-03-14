@@ -1,0 +1,13 @@
+﻿using Git_MVC_PRO.Models;
+using System.Collections;
+
+namespace Git_MVC_PRO.Repogitory
+{
+    public interface IEmployees
+    {
+
+        
+
+        Task<IEnumerable<Employees>> GetEmployees();
+    }
+}
