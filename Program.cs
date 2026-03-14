@@ -22,7 +22,7 @@ builder.Services.AddDbContext<LoginContext>(options =>
 });
 
 
-builder.Services.AddDefaultIdentity<UserRegister>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<LoginContext>();
+builder.Services.AddDefaultIdentity<UserRegister>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<LoginContext>();
 
 builder.Services.AddScoped<IDepartments, Depart>();
 builder.Services.AddScoped<IDepartService, DepartService>();

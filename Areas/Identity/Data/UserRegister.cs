@@ -10,6 +10,7 @@ namespace Git_MVC_PRO.Areas.Identity.Data;
 public class UserRegister : IdentityUser
 {
     public string FirstName { get; set; }
+    
 
     public string LastName { get; set; }
 
