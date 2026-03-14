@@ -2,6 +2,8 @@ using Git_MVC_PRO.Data;
 using Git_MVC_PRO.Repogitory;
 using Git_MVC_PRO.Service;
 using Microsoft.EntityFrameworkCore;
+using Git_MVC_PRO.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection"));
 });
+
+builder.Services.AddDbContext<LoginContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection"));
+});
+
+
+builder.Services.AddDefaultIdentity<UserRegister>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<LoginContext>();
 
 builder.Services.AddScoped<IDepartments, Depart>();
 builder.Services.AddScoped<IDepartService, DepartService>();
@@ -39,5 +49,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-
+app.MapRazorPages();
 app.Run();
