@@ -1,4 +1,5 @@
 ﻿using Git_MVC_PRO.Models;
+using Git_MVC_PRO.Repogitory;
 using Git_MVC_PRO.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,9 +15,20 @@ namespace Git_MVC_PRO.Controllers
          _service=service;
         
         }
-        public  async Task<IActionResult> Index()
+        public  async Task<IActionResult> Index(string searchString)
         {
             var data = await _service.GetDepartmentsService();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                data = data
+                    .Where(d => d.Name != null && d.Name.ToLower().Contains(searchString.ToLower()))
+                    .ToList(); 
+            }
+
+            
+            ViewBag.SearchString = searchString;
+
             return View(data);
         }
         [HttpGet]

@@ -14,11 +14,31 @@ namespace Git_MVC_PRO.Controllers
             _Emp = employees;
 
         }
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var employees = await _Emp.GetAll();
+
+        //    return View(employees);
+        //}
+
+        public async Task<IActionResult> Index(string searchString)
         {
-            var employees = await _Emp.GetAll();
-          
-            return View(employees);
+            var departments = await _Emp.GetAll(); 
+
+            
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                departments = departments
+                    .Where(d => d.departments != null && d.departments.Name.ToLower().Contains(searchString.ToLower())||
+                    (d.name != null && d.name.ToLower().Contains(searchString))||
+                     (d.lastname != null && d.lastname.ToLower().Contains(searchString)))
+                    .ToList();
+            }
+
+           
+            ViewBag.SearchString = searchString;
+
+            return View(departments);
         }
 
 
