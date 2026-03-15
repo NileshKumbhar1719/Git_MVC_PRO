@@ -1,10 +1,12 @@
 ﻿using Git_MVC_PRO.Models;
 using Git_MVC_PRO.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Git_MVC_PRO.Controllers
 {
+    [Authorize]
     public class EMPLOYEES : Controller
     {
         private readonly IEmployeesService _Emp;
@@ -41,7 +43,7 @@ namespace Git_MVC_PRO.Controllers
             return View(departments);
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Create()
         {

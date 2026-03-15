@@ -1,10 +1,12 @@
 ﻿using Git_MVC_PRO.Models;
 using Git_MVC_PRO.Repogitory;
 using Git_MVC_PRO.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Git_MVC_PRO.Controllers
 {
+    [Authorize]
     public class DEPARTMENTS : Controller
     {
         private readonly IDepartService _service;
