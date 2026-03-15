@@ -19,22 +19,13 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.lastname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.salary)
-            </th>
-            <th></th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>Department</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -55,6 +46,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.salary)
             </td>
+                <td>
+                    @item.departments?.Name
+                
+                </td>
+               
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

@@ -9,13 +9,13 @@ namespace Git_MVC_PRO.Repogitory
     {
         private readonly AppDbContext _context;
 
-        public Employee(AppDbContext context) 
-        { 
-        _context=context;
+        public Employee(AppDbContext context)
+        {
+            _context = context;
         }
         public async Task<Employees> CreateEmployees(Employees employees)
         {
-             _context.Employees.Add(employees);
+            _context.Employees.Add(employees);
             await _context.SaveChangesAsync();
             return employees;
         }
@@ -27,7 +27,9 @@ namespace Git_MVC_PRO.Repogitory
 
         public async Task<IEnumerable<Employees>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+            return await _context.Employees
+       .Include(e => e.departments)
+       .ToListAsync();
         }
 
         public async Task<Employees> GetIDByEmployees(int id)

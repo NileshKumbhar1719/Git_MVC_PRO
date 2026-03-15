@@ -17,6 +17,7 @@ namespace Git_MVC_PRO.Controllers
         public async Task<IActionResult> Index()
         {
             var employees = await _Emp.GetAll();
+          
             return View(employees);
         }
 
@@ -52,7 +53,7 @@ namespace Git_MVC_PRO.Controllers
             if (departments == null)
                 departments = new List<Departments>();
 
-            ViewBag.Departments = new SelectList(departments, "DepartmentsId", "Name", employees.DepartmentsId);
+            ViewBag.Departments = new SelectList(departments, "DepartmentsId", "Name", employees.DepartmentsId,employees.name);
 
             return View(employees);
         }
