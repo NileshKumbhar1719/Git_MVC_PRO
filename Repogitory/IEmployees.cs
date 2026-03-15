@@ -9,5 +9,12 @@ namespace Git_MVC_PRO.Repogitory
         
 
         Task<IEnumerable<Employees>> GetEmployees();
+
+        Task<Employees> GetIDByEmployees(int id);
+
+        Task<Employees> CreateEmployees(Employees employees);
+
+        Task<IEnumerable<Departments>> GetDepartments();
+
     }
 }

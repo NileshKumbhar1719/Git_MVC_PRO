@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Git_MVC_PRO.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260314045209_FirstMigration")]
+    [Migration("20260314132143_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />

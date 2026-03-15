@@ -26,6 +26,8 @@ builder.Services.AddDefaultIdentity<UserRegister>(options => options.SignIn.Requ
 
 builder.Services.AddScoped<IDepartments, Depart>();
 builder.Services.AddScoped<IDepartService, DepartService>();
+builder.Services.AddScoped<IEmployees, Employee>();
+builder.Services.AddScoped<IEmployeesService, EmployeesService>();
 
 var app = builder.Build();
 
