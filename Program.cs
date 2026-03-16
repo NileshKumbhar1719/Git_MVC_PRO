@@ -29,6 +29,11 @@ builder.Services.AddDefaultIdentity<UserRegister>(options =>
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<LoginContext>();
 
+
+
+
+
+
 // Dependency Injection
 builder.Services.AddScoped<IDepartments, Depart>();
 builder.Services.AddScoped<IDepartService, DepartService>();
@@ -37,24 +42,34 @@ builder.Services.AddScoped<IEmployeesService, EmployeesService>();
 
 var app = builder.Build();
 
-
-// Create Roles Automatically
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    if (!await roleManager.RoleExistsAsync("Admin"))
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
 
-    string[] roles = { "Admin", "User" };
-
-    foreach (var role in roles)
-    {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
+    if (!await roleManager.RoleExistsAsync("User"))
+        await roleManager.CreateAsync(new IdentityRole("User"));
 }
+
+// Create Roles Automatically
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+
+//    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+//    string[] roles = { "Admin", "User" };
+
+//    foreach (var role in roles)
+//    {
+//        if (!await roleManager.RoleExistsAsync(role))
+//        {
+//            await roleManager.CreateAsync(new IdentityRole(role));
+//        }
+//    }
+//}
 
 
 // Configure HTTP pipeline

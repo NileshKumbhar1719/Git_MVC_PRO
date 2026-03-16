@@ -33,6 +33,7 @@ namespace Git_MVC_PRO.Controllers
 
             return View(data);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Create(int id)
         {

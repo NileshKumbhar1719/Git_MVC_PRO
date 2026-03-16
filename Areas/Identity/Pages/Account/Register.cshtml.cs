@@ -105,6 +105,8 @@ namespace Git_MVC_PRO.Areas.Identity.Pages.Account
             [Display(Name = "Password")]
             public string Password { get; set; }
 
+           
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -113,6 +115,10 @@ namespace Git_MVC_PRO.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Role")]
+            public string Role { get; set; }
         }
 
 
@@ -132,6 +138,8 @@ namespace Git_MVC_PRO.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
+                
+                
 
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
@@ -141,6 +149,8 @@ namespace Git_MVC_PRO.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    await _userManager.AddToRoleAsync(user, Input.Role);
+                    await _userManager.AddToRoleAsync(user, "User"); 
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
