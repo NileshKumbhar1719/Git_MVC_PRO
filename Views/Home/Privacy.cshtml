@@ -1,6 +1,153 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<style>
+    body {
+        background: #f4f7fc;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .privacy-container {
+        width: 100%;
+        max-width: 600px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        padding: 30px;
+        margin: 40px auto;
+    }
+
+    .privacy-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+        .privacy-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .privacy-header p {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+    .privacy-section {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+        .privacy-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+    .contact-info p {
+        margin: 4px 0;
+    }
+
+    .contact-form {
+        margin-top: 20px;
+    }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+    .btn-submit {
+        width: 100%;
+        background: #6ea8fe;
+        border: none;
+        color: white;
+        font-weight: 500;
+        padding: 10px 0;
+        font-size: 0.95rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background: #4f8df5;
+        }
+
+    .map-container {
+        margin-top: 20px;
+        width: 100%;
+        height: 300px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+</style>
+
+<div class="privacy-container">
+
+    <div class="privacy-header">
+        <h2>Privacy Policy</h2>
+        <p>We value your privacy and explain how we handle your data.</p>
+    </div>
+
+    <div class="privacy-section">
+        <h3>Company Information</h3>
+        <p>Tech Nilesh Solutions Pvt. Ltd. is a leading IT company specializing in software development, cloud solutions, and digital transformation services.</p>
+    </div>
+
+    <div class="privacy-section">
+        <h3>Data Collection</h3>
+        <p>We collect user data responsibly to provide and improve our services. We never share personal information without your consent.</p>
+    </div>
+
+    <div class="privacy-section">
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+            <p><strong>Address:</strong> IT Park, Pune, Maharashtra, India</p>
+            <p><strong>Email:</strong> Nilesh@gmail.com</p>
+            <p><strong>Phone:</strong> +91 1719191717</p>
+        </div>
+    </div>
+
+    <div class="privacy-section contact-form">
+        <h3>Send us a message</h3>
+        <form method="post" asp-page-handler="Contact">
+            <input type="text" name="Name" placeholder="Your Name" required />
+            <input type="email" name="Email" placeholder="Your Email" required />
+            <textarea name="Message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+    </div>
+
+    <div class="privacy-section">
+        <h3>Our Location</h3>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.374852991358!2d73.84753327521142!3d18.519573987383053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c088ee5d5c0d%3A0xeec7151a6f7a4b2!2sPune%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1687027000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
