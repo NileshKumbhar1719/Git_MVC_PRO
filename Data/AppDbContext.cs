@@ -15,6 +15,8 @@ namespace Git_MVC_PRO.Data
 
        public DbSet<Employees> Employees { get; set; }
 
+        public DbSet<ContactMessage> ContactMessages { get; set; }
+
 
         
     }
