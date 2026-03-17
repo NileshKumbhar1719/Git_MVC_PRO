@@ -1,11 +1,9 @@
 using System.Diagnostics;
 using Git_MVC_PRO.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Git_MVC_PRO.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -15,13 +13,11 @@ namespace Git_MVC_PRO.Controllers
             _logger = logger;
         }
 
-        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
-        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();

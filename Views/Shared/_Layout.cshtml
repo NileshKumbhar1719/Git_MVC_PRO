@@ -3,119 +3,48 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TCS Dashboard</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
-
-    <style>
-        .login-register {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-            .login-register a {
-                color: white;
-                text-decoration: none;
-                padding: 0.25rem 0.5rem;
-                border-radius: 0.25rem;
-                transition: background-color 0.2s;
-            }
-
-                .login-register a:hover {
-                    background-color: rgba(255, 255, 255, 0.2);
-                }
-
-
-            .login-register span,
-            .login-register a,
-            .login-register button {
-                color: white;
-                text-decoration: none;
-                margin: 0 0.25rem;
-            }
-
-            .login-register button {
-                background: none;
-                border: none;
-                cursor: pointer;
-                padding: 0;
-            }
-
-                .login-register a:hover, .login-register button:hover {
-                    text-decoration: underline;
-                }
-       
-    </style>
+    <title>@ViewData["Title"] - Git_MVC_PRO</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Git_MVC_PRO.styles.css" asp-append-version="true" />
 </head>
 <body>
-
-    <!-- Topbar -->
-    <div id="topbar" class="d-flex align-items-center">
-        <div class="d-flex align-items-center">
-            <button id="sidebarCollapse">&#9776;</button>
-            <div class="topbar-links ms-2">
-                <a asp-controller="Home" asp-action="Index">Home</a>
-                <a asp-controller="Home" asp-action="Privacy">Privacy</a>
-                <a asp-controller="Departments" asp-action="Index">Departments</a>
-                <a asp-controller="Employees" asp-action="Index">Employees</a>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Git_MVC_PRO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="ms-auto d-flex align-items-center login-register">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <span class="me-2 text-white">Hello, @User.Identity.Name</span>
-                <a class="text-white" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
-                <span class="mx-2">|</span>
-                <form method="post" asp-area="Identity" asp-page="/Account/Logout" class="d-inline">
-                    <button type="submit" class="btn btn-link text-white p-0 m-0 align-baseline">Logout</button>
-                </form>
-            }
-            else
-            {
-                <a href="/Identity/Account/Login">Login</a>
-                <span class="mx-2">|</span>
-                <a href="/Identity/Account/Register">Register</a>
-            }
-        </div>
-
-    </div>
-
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link active" asp-controller="Home" asp-action="Index">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Departments" asp-action="Index">Departments</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Employees" asp-action="Index">Employees</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
-        </ul>
-    </nav>
-
-    <!-- Page Content -->
-    <div id="content">
-        <main role="main">
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
             @RenderBody()
         </main>
-
-        <footer class="border-top text-muted">
-            &copy; 2026 - TCS Dashboard
-        </footer>
     </div>
 
-    <!-- Scripts -->
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - Git_MVC_PRO - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('collapsed');
-            $('#content').toggleClass('full');
-            $('footer').toggleClass('full');
-        });
-    </script>
-
+    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
