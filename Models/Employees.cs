@@ -33,6 +33,7 @@ namespace Git_MVC_PRO.Models
         public int DepartmentsId { get; set; }
 
         [ForeignKey("DepartmentsId")]
+
         public Departments departments { get; set; }
     }
 }
