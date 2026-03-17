@@ -16,6 +16,8 @@ namespace Git_MVC_PRO.Controllers
             _Emp = employees;
 
         }
+
+        //nilesh
         //public async Task<IActionResult> Index()
         //{
         //    var employees = await _Emp.GetAll();
