@@ -4,6 +4,7 @@ namespace Git_MVC_PRO.Models
 {
     public class Departments
     {
+        [Key]
         public int DepartmentsId { get; set; }
 
         [Required]
@@ -11,5 +12,7 @@ namespace Git_MVC_PRO.Models
         public string Name { get;set; }
 
         public string Description { get;set;}
+
+        public List<Employees> Employees { get; set; }
     }
 }
