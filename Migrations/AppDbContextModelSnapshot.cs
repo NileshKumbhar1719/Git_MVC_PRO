@@ -95,10 +95,13 @@ namespace Git_MVC_PRO.Migrations
 
                     b.Property<string>("lastname")
                         .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("Last_Name");
 
                     b.Property<string>("name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("First_name");
 
                     b.Property<decimal>("salary")
