@@ -2,6 +2,6 @@
 {
     public class EmployessDTO
     {
-        public int IdDeparmet { get; set; }
+        public int Id { get; set; }
     }
 }
