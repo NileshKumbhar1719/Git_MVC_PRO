@@ -177,23 +177,23 @@ footer {
 }*/
 
 
-<style >
+/*<style >
 h1 {
     font-weight: 600;
     margin-bottom: 20px;
-}
+}*/
 
 /* Top section (button + search) */
-.top-bar {
+/*.top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-}
+}*/
 
 /* Search box */
-.form-inline .form-control {
+/*.form-inline .form-control {
     border-radius: 6px 0 0 6px;
     min-width: 200px;
 }
@@ -204,10 +204,10 @@ h1 {
 
     .input-group-append .btn:last-child {
         border-radius: 0 6px 6px 0;
-    }
+    }*/
 
 /* Table styling */
-table {
+/*table {
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
@@ -230,29 +230,29 @@ td {
 tbody tr:hover {
     background-color: #f2f6fc;
     transition: 0.2s;
-}
+}*/
 
 /* Buttons */
-.btn {
+/*.btn {
     border-radius: 6px;
 }
 
 .btn-sm {
     padding: 5px 10px;
-}
+}*/
 
 /* Action buttons spacing */
-td .btn {
+/*td .btn {
     margin-right: 5px;
-}
+}*/
 
 /* Alert message */
-.alert {
+/*.alert {
     border-radius: 6px;
-}
+}*/
 
 /* Responsive */
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
 
     .top-bar {
         flex-direction: column;
@@ -272,4 +272,4 @@ td .btn {
     }
 }
 
-</style >
+</style >*/

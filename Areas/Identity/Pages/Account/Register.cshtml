@@ -2,136 +2,205 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
-    Layout = null;
 }
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
     body {
-        background: #f4f7fc;
+        margin: 0;
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: 'Segoe UI', Tahoma, sans-serif;
-        margin: 0;
+        font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: #f4f6f9;
     }
 
     .register-container {
         width: 100%;
-        max-width: 480px; /* smaller, compact width */
-        background: white;
+        max-width: 950px;
+        background: #ffffff;
         border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         overflow: hidden;
-        padding: 30px; /* compact padding */
     }
 
-    .register-header {
-        text-align: center;
-        margin-bottom: 25px;
+    .register-left {
+        background: linear-gradient(135deg, #6ea8fe, #a6c8ff);
+        color: white;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
-        .register-header h2 {
-            font-size: 1.5rem;
+        .register-left h2 {
             font-weight: 600;
-            margin: 0;
         }
 
-        .register-header p {
-            font-size: 0.9rem;
-            margin-top: 8px;
-            line-height: 1.4;
+    .register-right {
+        padding: 40px;
+        background-color: #212529;
+        color: white;
+    }
+
+        .register-right h3 {
+            color: white;
+            font-weight: 500;
+            margin-bottom: 20px;
         }
 
     .form-control {
         border-radius: 6px;
-        padding: 8px 10px;
+        border: 1px solid #ced4da;
+        padding: 10px 12px;
+        font-size: 0.95rem;
+        background-color: #fff;
+        color: #495057;
     }
 
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+
     .btn-register {
-        background: #6ea8fe;
+        background-color: #80bdff;
         border: none;
+        color: #fff;
         font-weight: 500;
-        padding: 10px 0;
-        font-size: 0.95rem;
-        transition: background 0.3s ease;
+        border-radius: 6px;
+        padding: 10px;
     }
 
         .btn-register:hover {
-            background: #4f8df5;
+            background-color: #5aa7ff;
         }
 
     .extra-links {
-        text-align: center;
-        font-size: 0.85rem;
+        font-size: 14px;
         margin-top: 15px;
     }
 
         .extra-links a {
+            color: #80bdff;
             text-decoration: none;
-            color: #6ea8fe;
         }
 
             .extra-links a:hover {
                 text-decoration: underline;
             }
+
+    .text-danger {
+        font-size: 0.8rem;
+    }
+
+    /* PASSWORD EYE */
+    .password-wrapper {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #6c757d;
+    }
+
+        .toggle-password:hover {
+            color: #000;
+        }
 </style>
 
 <div class="register-container">
+    <div class="row g-0">
 
-    <div class="register-header">
-        <h2>Create Account ✨</h2>
-        <p>Join our platform to manage your account and access dashboards.</p>
+        <!-- LEFT PANEL -->
+        <div class="col-md-5 register-left">
+            <h2>Create Account 🚀</h2>
+            <p class="mt-3">
+                Join our platform today and take full control of your account,
+                explore features, and manage everything in one place.
+            </p>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="col-md-7 register-right">
+            <h3>Register</h3>
+
+            <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+                <div class="row g-2">
+                    <div class="col-6">
+                        <input asp-for="Input.FirstName" class="form-control" placeholder="First Name">
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for="Input.LastName" class="form-control" placeholder="Last Name">
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email">
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="mt-2 password-wrapper">
+                    <input asp-for="Input.Password" type="password" class="form-control" id="passwordField" placeholder="Password">
+                    <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('passwordField', this)"></i>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+                <div class="mt-2 password-wrapper">
+                    <input asp-for="Input.ConfirmPassword" type="password" class="form-control" id="confirmPasswordField" placeholder="Confirm Password">
+                    <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('confirmPasswordField', this)"></i>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="mt-2">
+                    <select asp-for="Input.Role" class="form-control">
+                        <option value="">Select Role</option>
+                        <option>User</option>
+                        <option>Admin</option>
+                    </select>
+                    <span asp-validation-for="Input.Role" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-register w-100 mt-3">
+                    Create Account
+                </button>
+
+                <div class="extra-links">
+                    <p>
+                        Already have an account?
+                        <a asp-page="./Login">Login here</a>
+                    </p>
+                </div>
+
+            </form>
+        </div>
+
     </div>
-
-    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-
-        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
-
-        <div class="row g-2">
-            <div class="col-6">
-                <input asp-for="Input.FirstName" class="form-control" placeholder="First Name">
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="col-6">
-                <input asp-for="Input.LastName" class="form-control" placeholder="Last Name">
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="mt-2">
-            <input asp-for="Input.Email" class="form-control" placeholder="Email">
-            <span asp-validation-for="Input.Email" class="text-danger"></span>
-        </div>
-
-        <div class="mt-2">
-            <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password">
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-        </div>
-
-        <div class="mt-2">
-            <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
-            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-        </div>
-
-        <div class="mt-2">
-            <select asp-for="Input.Role" class="form-control">
-                <option value="">Select Role</option>
-                <option value="User">User</option>
-                <option value="Admin">Admin</option>
-            </select>
-            <span asp-validation-for="Input.Role" class="text-danger"></span>
-        </div>
-
-        <button type="submit" class="btn btn-register w-100 mt-3">Create Account</button>
-
-    </form>
-
-    <div class="extra-links">
-        <p>Already have an account? <a asp-page="./Login">Login here</a></p>
-    </div>
-
 </div>
+
+<script>
+    function togglePassword(fieldId, icon) {
+        const field = document.getElementById(fieldId);
+        const type = field.getAttribute("type") === "password" ? "text" : "password";
+        field.setAttribute("type", type);
+
+        icon.classList.toggle("fa-eye");
+        icon.classList.toggle("fa-eye-slash");
+    }
+</script>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

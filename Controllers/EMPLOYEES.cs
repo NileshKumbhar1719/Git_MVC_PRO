@@ -23,7 +23,10 @@ namespace Git_MVC_PRO.Controllers
         //    var employees = await _Emp.GetAll();
 
         //    return View(employees);
-        //}
+        
+       
+        
+
 
         public async Task<IActionResult> Index(string searchString)
         {
