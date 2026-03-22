@@ -20,6 +20,7 @@ namespace Git_MVC_PRO.Controllers
         {
             return View();
         }
+        
 
         [AllowAnonymous]
         public IActionResult Privacy()
