@@ -11,6 +11,9 @@ namespace Git_MVC_PRO.Service
         Task<Employees> GetByID(int id);
         Task<IEnumerable<Departments>> GetDepartment();
 
+        Task<bool> Delete(int id);
+        Task<Employees> Edit(Employees employees);
+
 
     }
 }

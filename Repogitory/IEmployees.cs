@@ -16,5 +16,11 @@ namespace Git_MVC_PRO.Repogitory
 
         Task<IEnumerable<Departments>> GetDepartments();
 
+        Task<Employees>Edit(Employees employees);
+
+        Task<bool> DeleteEmployees(int id);
+
+
+
     }
 }

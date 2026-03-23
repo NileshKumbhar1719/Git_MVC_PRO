@@ -23,26 +23,26 @@ namespace Git_MVC_PRO.Controllers
         //    var employees = await _Emp.GetAll();
 
         //    return View(employees);
-        
-       
-        
+
+
+
 
 
         public async Task<IActionResult> Index(string searchString)
         {
-            var departments = await _Emp.GetAll(); 
+            var departments = await _Emp.GetAll();
 
-            
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 departments = departments
-                    .Where(d => d.departments != null && d.departments.Name.ToLower().Contains(searchString.ToLower())||
-                    (d.name != null && d.name.ToLower().Contains(searchString))||
+                    .Where(d => d.departments != null && d.departments.Name.ToLower().Contains(searchString.ToLower()) ||
+                    (d.name != null && d.name.ToLower().Contains(searchString)) ||
                      (d.lastname != null && d.lastname.ToLower().Contains(searchString)))
                     .ToList();
             }
 
-           
+
             ViewBag.SearchString = searchString;
 
             return View(departments);
@@ -80,11 +80,50 @@ namespace Git_MVC_PRO.Controllers
             if (departments == null)
                 departments = new List<Departments>();
 
-            ViewBag.Departments = new SelectList(departments, "DepartmentsId", "Name", employees.DepartmentsId,employees.name);
+            ViewBag.Departments = new SelectList(departments, "DepartmentsId", "Name", employees.DepartmentsId, employees.name);
 
             return View(employees);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var data = await _Emp.GetByID(id);
+            return View(data);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> Deletes(int id)
+        {
+            var data = await _Emp.Delete(id);
+            if (data == null)
+            {
+                return RedirectToAction("Index", "Departments Not Found");
+
+            }
+            TempData["message"] = "Delete data Successfully";
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var data = await _Emp.GetByID(id);
+            return View(data);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Employees employees)
+        {
+            var data = await _Emp.Edit(employees);
+            TempData["message"] = "Employees Update Successfully";
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var data = await _Emp.GetByID(id);
+            return View(data);
+        }
+         
 
 
     }

@@ -1,6 +1,7 @@
 ﻿
 using Git_MVC_PRO.Data;
 using Git_MVC_PRO.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace Git_MVC_PRO.Repogitory
@@ -16,6 +17,26 @@ namespace Git_MVC_PRO.Repogitory
         public async Task<Employees> CreateEmployees(Employees employees)
         {
             _context.Employees.Add(employees);
+            await _context.SaveChangesAsync();
+            return employees;
+        }
+
+        public  async Task<bool> DeleteEmployees(int id)
+        {
+            var data = await _context.Employees.FindAsync(id);
+            if (data ==null)
+            {
+                return false;
+            }
+            _context.Employees.Remove(data);
+            await _context.SaveChangesAsync();
+            return true;
+           
+        }
+
+        public async Task<Employees> Edit(Employees employees)
+        {
+             _context.Employees.Update(employees);
             await _context.SaveChangesAsync();
             return employees;
         }

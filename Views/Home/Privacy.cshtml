@@ -4,80 +4,92 @@
 }
 
 <style>
+    /* Body base styling */
+    /* Body base styling */
     body {
-        background: #f4f7fc;
+        background: #f4f6f9; /* light background for page */
         font-family: 'Segoe UI', Tahoma, sans-serif;
         margin: 0;
         padding: 0;
     }
 
+    /* Full-width container */
     .privacy-container {
-        width: 100%;
-        max-width: 480px; /* same as login/register */
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-        padding: 30px;
+        max-width: 900px;
         margin: 40px auto;
+        background: #343a40; /* dark card */
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        padding: 30px 40px;
+        color: #f8f9fa; /* light text for dark background */
     }
 
+    /* Header section */
     .privacy-header {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
         .privacy-header h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff; /* white heading */
+            margin-bottom: 8px;
         }
 
         .privacy-header p {
-            font-size: 0.9rem;
-            margin-top: 8px;
-            line-height: 1.4;
+            font-size: 1rem;
+            color: #ced4da; /* muted light text */
+            line-height: 1.6;
+            margin: 0;
         }
 
+    /* Section styling */
     .privacy-section {
-        margin-top: 20px;
-        font-size: 0.9rem;
-        line-height: 1.5;
+        margin-top: 25px;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        color: #e9ecef; /* light text for sections */
     }
 
         .privacy-section h3 {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #17a2b8; /* teal-ish header (AdminLTE style) */
+            border-bottom: 1px solid #495057; /* subtle underline */
+            padding-bottom: 5px;
         }
 
-    .contact-info {
-        margin-top: 15px;
-        font-size: 0.9rem;
+    /* Contact info */
+    .contact-info p {
+        margin: 4px 0;
+        color: #dee2e6; /* readable light color */
     }
 
-        .contact-info p {
-            margin: 4px 0;
-        }
-
+    /* Map styling */
     .map-container {
         margin-top: 20px;
-        border-radius: 8px;
+        border-radius: 6px;
         overflow: hidden;
+        border: 1px solid #495057; /* subtle border for dark card */
     }
 
         .map-container iframe {
             width: 100%;
-            height: 200px;
+            height: 250px;
             border: 0;
-            border-radius: 8px;
         }
+
+    /* Responsive adjustments */
+   
 </style>
 
 <div class="privacy-container">
 
     <div class="privacy-header">
         <h2>Privacy Policy</h2>
-        <p>We value your privacy and explain how we handle your data.</p>
+        <p>We value your privacy and explain how we handle your data responsibly.</p>
     </div>
 
     <div class="privacy-section">
@@ -93,7 +105,7 @@
     <div class="privacy-section">
         <h3>Contact Information</h3>
         <div class="contact-info">
-            <p><strong>Address:</strong>IT Park, Pune, Maharashtra, India</p>
+            <p><strong>Address:</strong> IT Park, Pune, Maharashtra, India</p>
             <p><strong>Email:</strong> Nilesh@gmail.com</p>
             <p><strong>Phone:</strong> +91 1719191717</p>
         </div>
@@ -102,7 +114,10 @@
     <div class="privacy-section">
         <h3>Our Location</h3>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.374852991358!2d73.84753327521142!3d18.519573987383053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c088ee5d5c0d%3A0xeec7151a6f7a4b2!2sPune%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1687027000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3823.6218412582564!2d75.56710007531215!3d21.00517628592564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4f19e3b7bcd11%3A0x4dff7eb99f2b5d2e!2sChaligaon%2C%20Jalgaon%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1687029000000!5m2!1sen!2sus"
+                    allowfullscreen=""
+                    loading="lazy">
+            </iframe>
         </div>
     </div>
 

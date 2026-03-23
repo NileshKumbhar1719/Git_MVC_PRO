@@ -12,6 +12,19 @@ namespace Git_MVC_PRO.Service
             _Employees=employees;
         
         }
+
+        public async Task<bool> Delete(int id)
+        {
+           return await _Employees.DeleteEmployees(id);
+        }
+
+
+        public async Task<Employees> Edit(Employees employees)
+        {
+            return await _Employees.Edit(employees);
+            
+        }
+
         public async Task<IEnumerable<Employees>> GetAll()
         {
             return await _Employees.GetEmployees(); 

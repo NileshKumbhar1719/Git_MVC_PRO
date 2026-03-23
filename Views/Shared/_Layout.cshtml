@@ -1004,9 +1004,121 @@
     <script src="~/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
-    <script src="dist/js/pages/dashboard2.js"></script>
+    
   
    
     @await RenderSectionAsync("Scripts", required: false)
+
+<script>
+           $(function () {
+            'use strict';
+
+            // ======================
+            // SALES CHART
+            // ======================
+            var salesElement = document.getElementById("salesChart");
+
+            if (salesElement) {
+                new Chart(salesElement.getContext("2d"), {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                        datasets: [
+                            {
+                                label: 'Digital Goods',
+                                backgroundColor: 'rgba(60,141,188,0.2)', // lighter fill
+                                borderColor: 'rgba(60,141,188,1)',       // line color
+                                pointBackgroundColor: 'rgba(60,141,188,1)',
+                                pointBorderColor: '#3b8bba',
+                                pointHoverBackgroundColor: '#3b8bba',
+                                pointHoverBorderColor: 'rgba(60,141,188,1)',
+                                data: [28, 48, 40, 19, 86, 27, 90],
+                                fill: true, // show area under line
+                                tension: 0.3 // smooth line
+                            },
+                            {
+                                label: 'Electronics',
+                                backgroundColor: 'rgba(210,214,222,0.2)',
+                                borderColor: 'rgba(210,214,222,1)',
+                                pointBackgroundColor: 'rgba(210,214,222,1)',
+                                pointBorderColor: '#c1c7d1',
+                                pointHoverBackgroundColor: '#c1c7d1',
+                                pointHoverBorderColor: 'rgba(210,214,222,1)',
+                                data: [65, 59, 80, 81, 56, 55, 40],
+                                fill: true,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false }
+                            },
+                            y: {
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // ======================
+            // PIE CHART
+            // ======================
+            var pieElement = document.getElementById("pieChart");
+
+            if (pieElement) {
+                new Chart(pieElement.getContext("2d"), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Chrome', 'IE', 'FireFox', 'Safari', 'Opera', 'Navigator'],
+                        datasets: [{
+                            data: [700, 500, 400, 600, 300, 100],
+                            backgroundColor: [
+                                '#f56954', // red
+                                '#00a65a', // green
+                                '#f39c12', // orange
+                                '#00c0ef', // cyan
+                                '#3c8dbc', // blue
+                                '#d2d6de'  // gray
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            // ======================
+            // MAP
+            // ======================
+            if ($('#world-map-markers').length) {
+                $('#world-map-markers').mapael({
+                    map: {
+                        name: 'usa_states',
+                        zoom: {
+                            enabled: true,
+                            maxLevel: 10
+                        }
+                    }
+                });
+            }
+
+        });
+</script>
 </body>
 </html>
