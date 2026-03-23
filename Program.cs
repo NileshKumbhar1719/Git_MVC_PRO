@@ -4,8 +4,16 @@ using Git_MVC_PRO.Service;
 using Microsoft.EntityFrameworkCore;
 using Git_MVC_PRO.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using NLog;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+builder.Logging.ClearProviders();
+
+// Register NLog
+builder.Host.UseNLog();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -40,6 +48,8 @@ builder.Services.AddScoped<IDepartService, DepartService>();
 builder.Services.AddScoped<IEmployees, Employee>();
 builder.Services.AddScoped<IEmployeesService, EmployeesService>();
 
+
+logger.Info("++===============================Server Start==================================++");
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())

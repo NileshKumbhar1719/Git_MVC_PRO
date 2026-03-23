@@ -10,10 +10,12 @@ namespace Git_MVC_PRO.Controllers
     public class EMPLOYEES : Controller
     {
         private readonly IEmployeesService _Emp;
+        private readonly ILogger<EMPLOYEES> _Logging;
 
-        public EMPLOYEES(IEmployeesService employees)
+        public EMPLOYEES(IEmployeesService employees,ILogger<EMPLOYEES> logger)
         {
             _Emp = employees;
+            _Logging = logger;
 
         }
 
@@ -44,7 +46,7 @@ namespace Git_MVC_PRO.Controllers
 
 
             ViewBag.SearchString = searchString;
-
+            _Logging.LogInformation("User all Data show "+searchString);
             return View(departments);
         }
 
@@ -89,6 +91,10 @@ namespace Git_MVC_PRO.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var data = await _Emp.GetByID(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
             return View(data);
         }
         [HttpPost]
@@ -98,10 +104,11 @@ namespace Git_MVC_PRO.Controllers
             var data = await _Emp.Delete(id);
             if (data == null)
             {
-                return RedirectToAction("Index", "Departments Not Found");
+                return RedirectToAction("Index");
 
             }
             TempData["message"] = "Delete data Successfully";
+            _Logging.LogInformation("current data"+ DateTime.Now.ToLocalTime());
             return RedirectToAction("Index");
         }
         [HttpGet]
