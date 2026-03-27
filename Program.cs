@@ -6,6 +6,9 @@ using Git_MVC_PRO.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using NLog;
 using NLog.Web;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,8 +39,6 @@ builder.Services.AddDefaultIdentity<UserRegister>(options =>
 })
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<LoginContext>();
-
-
 
 
 
