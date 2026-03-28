@@ -5,7 +5,7 @@ VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Git_MVC_PRO", "Git_MVC_PRO.csproj", "{A23D207A-B1F3-4658-AD02-75850E4529B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.test", "..\Controller.test\Controller.test.csproj", "{394F7419-9441-4CA5-A016-DE2A8F77C8F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Git_MVC_PRO.Tests", "..\Git_MVC_PRO.Tests\Git_MVC_PRO.Tests.csproj", "{2E4D80B6-D8B8-4575-A6E5-23798907FE9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{A23D207A-B1F3-4658-AD02-75850E4529B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A23D207A-B1F3-4658-AD02-75850E4529B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A23D207A-B1F3-4658-AD02-75850E4529B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{394F7419-9441-4CA5-A016-DE2A8F77C8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{394F7419-9441-4CA5-A016-DE2A8F77C8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{394F7419-9441-4CA5-A016-DE2A8F77C8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{394F7419-9441-4CA5-A016-DE2A8F77C8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E4D80B6-D8B8-4575-A6E5-23798907FE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4D80B6-D8B8-4575-A6E5-23798907FE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4D80B6-D8B8-4575-A6E5-23798907FE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4D80B6-D8B8-4575-A6E5-23798907FE9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
