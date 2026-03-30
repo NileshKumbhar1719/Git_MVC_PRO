@@ -3,6 +3,7 @@ using Git_MVC_PRO.Repogitory;
 using Git_MVC_PRO.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Git_MVC_PRO.Controllers
 {
@@ -46,6 +47,12 @@ namespace Git_MVC_PRO.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Departments departments)
         {
+            if (HttpContext.Items.ContainsKey("RateLimitExceeded"))
+            {
+                TempData["message"] = "Daily limit reached: You can only create 3 departments per day.";
+                return RedirectToAction("Index"); // redirect to Index page
+            }
+
             var data = await _service.AddDepartmentsService(departments);
             TempData["message"] = "Create data Successfully";
             return RedirectToAction("Index");

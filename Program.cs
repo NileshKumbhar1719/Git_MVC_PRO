@@ -9,6 +9,7 @@ using NLog.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Git_MVC_PRO.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -98,6 +99,8 @@ app.UseRouting();
 // IMPORTANT
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCustomRateLimiting();
 
 app.MapControllerRoute(
     name: "default",
